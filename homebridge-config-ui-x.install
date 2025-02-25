@@ -26,7 +26,7 @@ post_install() {
 	You have been warned.
 
 	5) It is recommended to run homebridge with a supported Node.js version.
-	Currently nodejs-lts-iron (Node.js 20) is the recommended version. Node 23 is not working 
+	Currently nodejs-lts-jod (Node.js 22) is the recommended version. Node 23 is not working 
 	with homebridge right now.
 
 	6) To use systemd-resolved as the mDNS resolver, set up systemd-resolved mDNS
