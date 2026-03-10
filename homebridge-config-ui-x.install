@@ -1,7 +1,7 @@
 post_install() {
 	cat <<-EOF
 
-	Start homebridge + ui with systemd:
+	Start homebridge + UI with systemd:
 
 	$ systemctl enable --now homebridge
 
@@ -9,20 +9,20 @@ post_install() {
 
 	1) /usr/bin/hb-service places files all over the system, and it will
 	also modify /etc/sudoers. It is also capable of installing an
-	alternative binary of Node.js. It is recommended to *never* use it.
+	alternative binary of Node.js. It is recommended to *avoid* using it with an AUR install.
 
-	2) Installing or upgrading plugins from the web ui invokes npm install
-	globally (/usr/lib/node_modules). You can alternatively package plugins as AUR
-	packages. Sticking with verified plugins can also provide a higher level of
+	2) Installing or upgrading plugins from the web UI invokes npm install
+	globally (/usr/lib/node_modules). This can pose supply chain attack risks.
+	Sticking with verified plugins will provide a higher level of
 	security.
 	See: https://github.com/homebridge/homebridge/wiki/Verified-Plugins
 
-	3) To give permissions to the web ui to poweroff/reboot the machine and
+	3) To give permissions to the web UI to poweroff/reboot the machine and
 	install plugins, create a drop-in file in /etc/sudoers.d similar to:
 
 	homebridge ALL=(ALL) NOPASSWD:SETENV: /usr/bin/npm, /usr/bin/shutdown, /usr/local/bin/npm
 
-	4) The web ui runs commands with sudo in various places.
+	4) The web UI runs commands with sudo in various places.
 	You have been warned.
 
 	5) It is recommended to run homebridge with a supported Node.js LTS version.
@@ -31,6 +31,8 @@ post_install() {
 	6) To use systemd-resolved as the mDNS resolver, set up systemd-resolved mDNS
 	and then follow these instructions:
 	https://github.com/homebridge/homebridge/wiki/mDNS-Options#systemd-resolved-linux-only-experimental
+	Note: If you experience mDNS resolution errors, be sure to disable "Advertise Via mDNS" and "Enable UI Accessory Control"
+	as they open their own mDNS sockets which can interfere with systemd-resolved.
 
 	EOF
 }
