@@ -3,7 +3,7 @@
 
 pkgname=homebridge-config-ui-x
 pkgver=5.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Web-based management tool for Homebridge'
 arch=('any')
 url='https://github.com/homebridge/homebridge-config-ui-x'
